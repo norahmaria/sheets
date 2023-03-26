@@ -86,20 +86,6 @@ const applyAutomaticPageBreaks = () => {
           page.nextElementSibling?.insertBefore(snippets[s], page.nextElementSibling.firstChild)
         }
       }
-
-      // pages[p].insertAdjacentHTML('afterend', '<div class="page"></div>')
-      // pageCoords = pages[p].getBoundingClientRect()
-      // snippets = pages[p].querySelectorAll('h1, h2, h3, h4, h5, h6, p, ul, ol')
-      // for (var s = snippets.length - 1; s >= 0; s--) {
-      //   snippetCoords = snippets[s].getBoundingClientRect()
-      //   if (snippetCoords.bottom - pageCoords.top + pageMarginBottomInPixels > pageHeightInPixels) {
-      //     const nextElem = pages[p].nextElementSibling
-      //     if (nextElem) {
-      //       nextElem.insertBefore(snippets[s], nextElem.firstChild)
-      //     }
-      //   }
-      // }
-      // pages = document.value.querySelectorAll('.page')
     }
   }
 }
