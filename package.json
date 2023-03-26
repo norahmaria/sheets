@@ -1,0 +1,27 @@
+{
+	"name": "paper",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "pnpm --stream --parallel -r dev",
+		"lint": "eslint . --ext .ts --ext .vue --fix"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^5.56.0",
+		"@typescript-eslint/parser": "^5.56.0",
+		"@vue/eslint-config-airbnb": "^7.0.0",
+		"@vue/eslint-config-typescript": "^11.0.2",
+		"eslint": "^8.36.0",
+		"eslint-config-prettier": "^8.8.0",
+		"eslint-import-resolver-typescript": "^3.5.3",
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-plugin-vue": "^9.10.0",
+		"prettier": "^2.8.7",
+		"typescript": "^5.0.2"
+	}
+}
