@@ -75,7 +75,7 @@ const applyAutomaticPageBreaks = () => {
     const snippets = page.querySelectorAll('*')
 
     if (page.clientHeight > pageHeightInPixels) {
-      console.log('over')
+      console.log('Over page', page)
 
       page.insertAdjacentHTML('afterend', '<div class="page" />')
 
