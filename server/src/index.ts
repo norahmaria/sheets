@@ -21,32 +21,27 @@ const main = async () => {
 
 		const page = await browser.newPage();
 
-		await page.setViewport({
-			deviceScaleFactor: devicePixelRatio,
-
-			/** @see https://www.a4-size.com/a4-size-in-pixels/?size=a4&unit=px&ppi=96 */
-			width: 794,
-			height: 1123,
-		});
-
 		const css = await readFile('src/style.css', 'utf-8');
+
+		await page.emulateMediaType('screen');
 
 		await page.setContent(`<style>${css}</style>${html}`);
 
 		const pdf = await page.pdf({
 			margin: {
-				top: '2cm',
-				left: '2cm',
-				right: '2cm',
-				bottom: '2cm',
+				top: 0,
+				left: 0,
+				right: 0,
+				bottom: 0,
 			},
 
-			scale: 1 / 0.65,
-
-			displayHeaderFooter: false,
+			scale: 1 / 0.75,
+			// displayHeaderFooter: false,
 		});
 
 		await writeFile('pdf.pdf', pdf);
+
+		console.log('Created PDF');
 
 		res.status(200).end();
 

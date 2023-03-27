@@ -34,6 +34,8 @@ const pageContents = ref([props.html])
 
 const document = ref<HTMLDivElement>()
 
+const pages = ref<HTMLDivElement[]>([])
+
 const print = async () => {
   await fetch('http://localhost:3000/convert', {
     method: 'POST',
@@ -47,8 +49,6 @@ const print = async () => {
     }
   })
 }
-
-const pages = ref<HTMLDivElement[]>([])
 
 const applyPageBreaks = () => {
   applyAutomaticPageBreaks()
@@ -68,7 +68,7 @@ const applyAutomaticPageBreaks = () => {
   let pageMarginBottomInPixels = Math.ceil(pageMarginBottomInInch * props.config.pixelsPerInch)
 
   for (let p = 0; p < pages.value.length; p++) {
-    const page = pages.value[p]
+    const page = pages.value[p]!
 
     const coords = page.getBoundingClientRect()
 
@@ -80,10 +80,10 @@ const applyAutomaticPageBreaks = () => {
       page.insertAdjacentHTML('afterend', '<div class="page" />')
 
       for (let s = snippets.length - 1; s >= 0; s--) {
-        const snippetCoords = snippets[s].getBoundingClientRect()
+        const snippetCoords = snippets[s]!.getBoundingClientRect()
 
         if (snippetCoords.bottom - coords.top + pageMarginBottomInPixels > pageHeightInPixels) {
-          page.nextElementSibling?.insertBefore(snippets[s], page.nextElementSibling.firstChild)
+          page.nextElementSibling?.insertBefore(snippets[s]!, page.nextElementSibling.firstChild)
         }
       }
     }
